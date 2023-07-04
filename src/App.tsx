@@ -21,6 +21,10 @@ const App = ({ title }: Props) => {
     }
   ]);
 
+  // Funcion para añadir los datos:
+  const addANewTask = (task: Task) => setTasks([...tasks, task])
+
+
   return (
     <>
       <div className="bg-slate-950" style={{ height: "100vh" }}>
@@ -35,7 +39,7 @@ const App = ({ title }: Props) => {
         </nav>
 
         <div className="container rounded mx-auto mt-10 p-4 bg-indigo-500">
-          <TaskForm />
+          <TaskForm addANewTask={addANewTask} />
         </div>
 
         <main className="container rounded mx-auto mt-10 p-4 bg-indigo-500 grid">
