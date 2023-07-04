@@ -1,22 +1,20 @@
 import { Task } from '../interfaces/Task'
+import TaskCard from './TaskCard'
 
 interface Props {
-    tasks: Task[]
+	tasks: Task[]
 }
 
 const TaskList = ({ tasks }: Props) => {
-    return (
-        <>
-            <div>
+	return (
+		<>
+			<div>
 
-                {tasks.map((task) => (
-                    <div>
-                        <h2 className="text-white">{task.title}</h2>
-                    </div>
-                ))}
-            </div>
-        </>
-    )
+				{tasks.map((task) => <TaskCard task={task} />
+				)}
+			</div>
+		</>
+	)
 }
 
 export default TaskList
