@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App title='TODO List  with TypeScript' />
   </React.StrictMode>
 );
 

@@ -2,8 +2,9 @@ import { useState } from "react";
 
 import logo from './logo.svg';
 import { Task } from "./interfaces/Task";
-import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
+import Main from "./components/Main";
+import './App.css';
 
 interface Props {
   //agrego el signo de pregunta para decirle a TS que no solo puede ser un string, sino que tambien puede ser undefined.
@@ -36,13 +37,13 @@ const App = ({ title }: Props) => {
 
   return (
     <>
-      <div className="bg-slate-950" style={{ height: "100vh" }}>
+      <div>
         <nav className="w-full">
           <div className="h-14 bg-indigo-600 flex items-center text-white">
             <a href="/">
               <img src={logo} className="w-10  h-10" alt="React logo" />
             </a>
-            {title && <h1 className="cursor-default">{title}</h1>}
+            {title && <h1 className="cursor-default italic">{title}</h1>}
 
           </div>
         </nav>
@@ -51,13 +52,7 @@ const App = ({ title }: Props) => {
           <TaskForm addANewTask={addANewTask} />
         </div>
 
-        <main className="container rounded mx-auto mt-10 p-4 bg-indigo-500">
-          <div className="grid grid-rows-1">
-            <div>
-              <TaskList tasks={tasks} deleteATask={deleteATask} />
-            </div>
-          </div>
-        </main>
+        <Main tasks={tasks} deleteATask={deleteATask} />
 
       </div>
     </>

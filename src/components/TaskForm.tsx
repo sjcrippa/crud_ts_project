@@ -38,7 +38,7 @@ const TaskForm = ({ addANewTask }: Props) => {
   return (
     <>
       <div className="grid grid-cols-1">
-        <h1 className="uppercase text-white">Add task</h1>
+        <h1 className="uppercase text-white font-bold text-xl">Add task</h1>
         <form
           onSubmit={handleNewTask}
           className="mt-5 flex flex-col gap-5">
@@ -51,16 +51,19 @@ const TaskForm = ({ addANewTask }: Props) => {
             value={task.title}
             autoFocus
             ref={inputTitle}
+            required
           />
           <textarea
             className="p-1"
             placeholder="Write a description"
             name="description"
-            rows={2}
+            rows={3}
             value={task.description}
+            required
             onChange={handleInputChange}>
+              
           </textarea>
-          <button type='submit' className="flex justify-start mt-5 bg-emerald-400 hover:opacity-90 p-1 rounded">
+          <button type='submit' className="flex justify-start bg-emerald-400 hover:opacity-90 p-1 rounded">
             <span className="mx-auto">
               <AiFillPlusCircle size={25} />
             </span>
