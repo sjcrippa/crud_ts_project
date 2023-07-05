@@ -1,20 +1,23 @@
-import { Task } from '../interfaces/Task'
-import TaskCard from './TaskCard'
+import { Task } from '../interfaces/Task';
+import TaskCard from './TaskCard';
 
 interface Props {
-	tasks: Task[]
-}
+	tasks: Task[];
+	deleteATask: (id: number) => void;
+};
 
-const TaskList = ({ tasks }: Props) => {
+const TaskList = ({ tasks, deleteATask }: Props) => {
 	return (
 		<>
 			<div>
-
-				{tasks.map((task) => <TaskCard task={task} />
+				{tasks.map((task) =>
+					<div key={task.id} className='grid grid-cols-3'>
+						<TaskCard task={task} deleteATask={deleteATask}/>
+					</div>
 				)}
 			</div>
-		</>
+		</>	
 	)
 }
 
-export default TaskList
+export default TaskList;

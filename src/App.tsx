@@ -11,7 +11,7 @@ interface Props {
 };
 
 const App = ({ title }: Props) => {
-
+  // El elemento <Task[]> es un parametro extra que le damos a la funcion. 
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
@@ -21,9 +21,18 @@ const App = ({ title }: Props) => {
     }
   ]);
 
-  // Funcion para añadir los datos:
-  const addANewTask = (task: Task) => setTasks([...tasks, task])
+  const getCurrentTimeDataForId = (): number => new Date().getTime();
 
+  // Funcion para añadir los datos desde el formulario a la grilla de cards:
+  const addANewTask = (task: Task) =>
+    setTasks([...tasks, {
+      ...task,
+      id: getCurrentTimeDataForId(),
+      completed: false,
+    }])
+
+  // Funcion para eliminar las cards de la grilla:
+  const deleteATask = (id: number) => setTasks(tasks.filter(task => task.id !== id));
 
   return (
     <>
@@ -42,10 +51,10 @@ const App = ({ title }: Props) => {
           <TaskForm addANewTask={addANewTask} />
         </div>
 
-        <main className="container rounded mx-auto mt-10 p-4 bg-indigo-500 grid">
+        <main className="container rounded mx-auto mt-10 p-4 bg-indigo-500">
           <div className="grid grid-rows-1">
-            <div className="grid grid-cols-3">
-              <TaskList tasks={tasks} />
+            <div>
+              <TaskList tasks={tasks} deleteATask={deleteATask} />
             </div>
           </div>
         </main>
