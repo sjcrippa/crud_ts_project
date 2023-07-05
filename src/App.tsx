@@ -44,15 +44,13 @@ const App = ({ title }: Props) => {
               <img src={logo} className="w-10  h-10" alt="React logo" />
             </a>
             {title && <h1 className="cursor-default italic">{title}</h1>}
-
           </div>
         </nav>
 
-        <div className="container rounded mx-auto mt-10 p-4 bg-indigo-500">
+        <div className="px-5">
           <TaskForm addANewTask={addANewTask} />
+          <Main tasks={tasks} deleteATask={deleteATask} />
         </div>
-
-        <Main tasks={tasks} deleteATask={deleteATask} />
 
       </div>
     </>
