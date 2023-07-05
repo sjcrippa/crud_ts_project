@@ -38,7 +38,7 @@ const TaskForm = ({ addANewTask }: Props) => {
   return (
     <>
       <div className="container rounded mx-auto mt-10 p-4 bg-indigo-500 grid grid-cols-1">
-        <h1 className="uppercase text-white font-bold text-xl">Add task</h1>
+        <h1 className="uppercase text-white font-bold text-2xl font-serif">Add task</h1>
         <form
           onSubmit={handleNewTask}
           className="mt-5 flex flex-col gap-5">
