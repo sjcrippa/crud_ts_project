@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { AiFillPlusCircle } from "react-icons/ai";
 
 import { Task } from '../interfaces/Task';
@@ -18,7 +18,8 @@ const initialState = {
   description: '',
 }
 const TaskForm = ({ addANewTask }: Props) => {
-  const [task, setTask] = useState(initialState);
+  const [task, setTask] = useState<Task>(initialState);
+  const inputTitle = useRef<HTMLInputElement>(null)
 
   const handleInputChange = ({
     target: { name, value },
@@ -31,6 +32,7 @@ const TaskForm = ({ addANewTask }: Props) => {
     e.preventDefault() // para cancelar el envio del formulario.
     addANewTask(task)
     setTask(initialState) // para que esto funcione, el input tiene que pode reflejar este estado. Lo hacemos con un value (lineas 49 y 56)
+    inputTitle.current?.focus()
   }
 
   return (
@@ -47,6 +49,8 @@ const TaskForm = ({ addANewTask }: Props) => {
             className="p-1"
             onChange={handleInputChange}
             value={task.title}
+            autoFocus
+            ref={inputTitle}
           />
           <textarea
             className="p-1"
